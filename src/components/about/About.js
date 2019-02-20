@@ -1,7 +1,6 @@
 import React from 'react';
 
-const TodoListDetails = (props) => {
-    const id = props.match.params.id;
+const About = () => {
     return (
         <div className="container section project-details">
             <div className="card z-depth-0">
@@ -18,4 +17,4 @@ const TodoListDetails = (props) => {
     );
 };
 
-export default TodoListDetails;
+export default About;

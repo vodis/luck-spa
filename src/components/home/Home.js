@@ -1,19 +1,10 @@
-import React, { Component } from 'react';
-import TodoList from '../projects/TodoList';
+import React from 'react';
+import TodoSummary from '../todos/TodoSummary';
 
-class Home extends Component {
-    render() {
-
-        return (
-            <div className="home container">
-                <div className="row">
-                    <div className="col">
-                        <TodoList />
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
+const Home = () => (
+    <div>
+        <TodoSummary />
+    </div>
+);
 
 export default Home;

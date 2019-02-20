@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  max-width: 100% !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -11,4 +12,29 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.footer {
+  height: 40px !important;
+}
+
+.new-todo::placeholder {
+  padding: 0 60px !important;
+}
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+  pointer-events: all !important;
+}
+
+input[type=text]:not(.browser-default) {
+  padding-left: 50px;
+}
+
+.container {
+  overflow: hidden;
+}
+
+.todo-list li label {
+  color: darkblue;
+  font-size: 18px;
 }
