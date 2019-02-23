@@ -1,10 +1,10 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL_TODOS, CLEAR_COMPLETED } from '../constants/ActionTypes';
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL_TODOS, CLEAR_COMPLETED, CREATE_TODO_ERROR } from '../constants/ActionTypes';
 
 const initialState = [
     {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: '0'
     }
 ];
 
@@ -14,7 +14,6 @@ export default function todos(state = initialState, action) {
             return [
                 ...state,
                 {
-                    id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
                     completed: false,
                     text: action.text
                 }
@@ -40,14 +39,18 @@ export default function todos(state = initialState, action) {
             );
 
         case COMPLETE_ALL_TODOS:
-            const areAllMarked = state.every(todo => todo.completed)
+            const areAllMarked = state.every(todo => todo.completed);
             return state.map(todo => ({
                 ...todo,
                 completed: !areAllMarked
             }));
 
         case CLEAR_COMPLETED:
-            return state.filter(todo => todo.completed === false)
+            return state.filter(todo => todo.completed === false);
+
+        case CREATE_TODO_ERROR:
+            console.log('create todo error', action.err);
+            return state;
 
         default:
             return state

@@ -26,15 +26,50 @@ code {
   pointer-events: all !important;
 }
 
-input[type=text]:not(.browser-default) {
-  padding-left: 50px;
-}
-
-.container {
-  overflow: hidden;
-}
-
 .todo-list li label {
   color: darkblue;
   font-size: 18px;
+}
+
+.btn-todo-details {
+  font-size: 14px;
+  line-height: 1.4em;
+  position: absolute;
+  background-color: white;
+  top: 0;
+  right: 50px;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  margin: auto 0;
+  color: #777;
+  -webkit-transition: color 0.2s ease-out;
+  -o-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+  margin-bottom: 10px;
+}
+
+.btn-todo-details:focus {
+  background-color: white;
+}
+
+.editing {
+  overflow: hidden;
+}
+
+.header {
+  overflow: hidden;
+}
+
+.edit {
+  padding: 0 !important;
+  margin: 0 30px !important;
+}
+
+.todo-list li label {
+  padding: 15px 100px 15px 60px !important;
+}
+
+input[type=text]:not(.browser-default) {
+  padding-left: 60px;
 }

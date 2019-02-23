@@ -28,6 +28,10 @@ class TodoItem extends Component {
         this.setState({ editing: false })
     };
 
+    getDetails = (id) => {
+        console.log(id);
+    };
+
     render() {
         const { todo, completeTodo, deleteTodo } = this.props;
 
@@ -44,10 +48,12 @@ class TodoItem extends Component {
                     <input className="toggle"
                            type="checkbox"
                            checked={todo.completed}
-                           onChange={() => completeTodo(todo.id)} />
+                           onChange={() => completeTodo(todo.id, todo.completed)} />
                     <label onDoubleClick={this.handleDoubleClick}>
                         {todo.text}
                     </label>
+                    <button className="btn-todo-details"
+                            onClick={this.getDetails.bind(this, todo.id)} >Details</button>
                     <button className="destroy"
                             onClick={() => deleteTodo(todo.id)} />
                 </div>

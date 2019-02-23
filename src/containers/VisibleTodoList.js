@@ -3,19 +3,30 @@ import { bindActionCreators } from 'redux';
 import * as TodoActions from '../actions';
 import TodoList from '../components/todos/TodoList';
 import { getVisibleTodos } from '../selectors';
-
-const mapStateToProps = state => ({
-    filteredTodos: getVisibleTodos(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(TodoActions, dispatch)
-});
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
 
 
-const VisibleTodoList = connect(
-    mapStateToProps,
-    mapDispatchToProps
+const mapStateToProps = state => {
+    return {
+        filteredTodos: getVisibleTodos(state, state.firestore.ordered)
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        actions: bindActionCreators(TodoActions, dispatch)
+    }
+};
+
+const VisibleTodoList = compose(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    ),
+    firestoreConnect([
+        { collection: 'todos' }
+    ])
 )(TodoList);
 
 export default VisibleTodoList;

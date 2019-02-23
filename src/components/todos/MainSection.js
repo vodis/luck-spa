@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import Footer from './Footer';
 import VisibleTodoList from '../../containers/VisibleTodoList';
 import * as TodoActions from "../../actions";
-import {getCompletedTodoCount} from "../../selectors";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-
+import { getCompletedTodoCount } from "../../selectors";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
 
 const MainSection = ({ todosCount, completedCount, actions }) =>
     (
@@ -41,10 +42,12 @@ MainSection.propTypes = {
     actions: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-    todosCount: state.todos.length,
-    completedCount: getCompletedTodoCount(state)
-});
+const mapStateToProps = state => {
+    return {
+        todosCount: state.firestore.ordered.todos !== undefined ? state.firestore.ordered.todos.length : 0,
+        completedCount: getCompletedTodoCount(state)
+    }
+};
 
 
 const mapDispatchToProps = dispatch => ({
@@ -52,4 +55,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainSection)
+export default compose(
+    connect( mapStateToProps, mapDispatchToProps ),
+    firestoreConnect(props => [
+        { collection: 'todos' }
+    ])
+)(MainSection);

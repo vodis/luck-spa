@@ -10,6 +10,7 @@ const FILTER_TITLES = {
 };
 
 const Footer = (props) => {
+    console.log(props);
     const { activeCount, completedCount, onClearCompleted } = props;
     const itemWord = activeCount === 1 ? 'item' : 'items';
     return (
@@ -36,12 +37,12 @@ const Footer = (props) => {
             }
         </footer>
     )
-}
+};
 
 Footer.propTypes = {
     completedCount: PropTypes.number.isRequired,
     activeCount: PropTypes.number.isRequired,
     onClearCompleted: PropTypes.func.isRequired,
-}
+};
 
-export default Footer
+export default Footer;
