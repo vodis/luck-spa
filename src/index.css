@@ -73,3 +73,97 @@ code {
 input[type=text]:not(.browser-default) {
   padding-left: 60px;
 }
+
+.card-auth {
+  padding: 50px 20px;
+  margin: 50px 5px;
+}
+
+.card-title {
+  margin: 20px 0;
+}
+
+.auth-divider {
+  position: relative;
+  top: 20px;
+}
+
+.btn-login {
+  width: 100%;
+}
+
+@media screen and (device-aspect-ratio: 2/3) {
+  .todoapp h1 {
+    margin: 50px 0 10px 0 !important;
+    font-size: 60px !important;
+  }
+
+  .nav-wrapper {
+    height: 100px;
+  }
+  .container-tab {
+    display: grid;
+    grid-template-rows: 40px;
+    grid-template-areas:
+            "l"
+            "b";
+    height: 100%;
+  }
+  .in-links {
+    grid-area: b;
+  }
+  .brand-log {
+    grid-area: l;
+  }
+}
+
+@media screen and (device-aspect-ratio: 40/71) {
+  .todoapp h1 {
+    margin: 50px 0 10px 0 !important;
+    font-size: 60px !important;
+  }
+
+  .nav-wrapper {
+    height: 100px;
+  }
+  .container-tab {
+    display: grid;
+    grid-template-rows: 40px;
+    grid-template-areas:
+            "l"
+            "b";
+    height: 100%;
+  }
+  .in-links {
+    grid-area: b;
+  }
+  .brand-log {
+    grid-area: l;
+  }
+}
+
+@media screen and (device-aspect-ratio: 375/667) {
+  .todoapp h1 {
+    margin: 50px 0 10px 0 !important;
+    font-size: 60px !important;
+  }
+
+  .nav-wrapper {
+    height: 100px;
+  }
+  .container-tab {
+    display: grid;
+    grid-template-rows: 40px;
+    grid-template-areas:
+            "l"
+            "b";
+    height: 100%;
+  }
+  .in-links {
+    grid-area: b;
+  }
+  .brand-log {
+    grid-area: l;
+  }
+}
+

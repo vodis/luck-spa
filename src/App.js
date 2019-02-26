@@ -6,6 +6,7 @@ import About from './components/about/About';
 import Footer from './components/footer/Footer';
 import Login from './components/auth/Login';
 import SignUp from './components/auth/SignUp';
+import TodoDetails from './components/todos/TodoDetails';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
                 <Navbar />
                 <Switch>
                     <Route exact path='/' component={Home} />
+                    <Route path='/todo/:id' component={TodoDetails} />
                     <Route path='/about' component={About} />
                     <Route path='/login' component={Login} />
                     <Route path='/signup' component={SignUp} />

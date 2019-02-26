@@ -1,12 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-const About = () => {
+const About = (props) => {
+    const { auth } = props;
+    if (!auth.uid) return <Redirect to='/login' />;
+
     return (
         <div className="container section project-details">
             <div className="card z-depth-0">
                 <div className="card-content">
-                    <span className="card-title">SPA routing and state manager pattern.</span>
-                    <p>Welcome to the test Luck SPA.</p>
+                    <span className="card-title">Luck SPA</span>
+                    <p>Welcome to Luck SPA Todo List.</p>
                 </div>
                 <div className="card-action gret lighten-4 grey-text">
                     <div>Posted by the vodis</div>
@@ -17,4 +22,10 @@ const About = () => {
     );
 };
 
-export default About;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+};
+
+export default connect(mapStateToProps)(About);

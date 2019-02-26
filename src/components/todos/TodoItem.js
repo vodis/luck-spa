@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import TodoTextInput from './TodoTextInput';
+import { Link } from 'react-router-dom';
 
 class TodoItem extends Component {
     static propTypes = {
@@ -28,10 +29,6 @@ class TodoItem extends Component {
         this.setState({ editing: false })
     };
 
-    getDetails = (id) => {
-        console.log(id);
-    };
-
     render() {
         const { todo, completeTodo, deleteTodo } = this.props;
 
@@ -44,19 +41,20 @@ class TodoItem extends Component {
             )
         } else {
             element = (
-                <div className="view">
-                    <input className="toggle"
-                           type="checkbox"
-                           checked={todo.completed}
-                           onChange={() => completeTodo(todo.id, todo.completed)} />
-                    <label onDoubleClick={this.handleDoubleClick}>
-                        {todo.text}
-                    </label>
-                    <button className="btn-todo-details"
-                            onClick={this.getDetails.bind(this, todo.id)} >Details</button>
-                    <button className="destroy"
-                            onClick={() => deleteTodo(todo.id)} />
-                </div>
+                    <div className="view">
+                        <input className="toggle"
+                               type="checkbox"
+                               checked={todo.completed}
+                               onChange={() => completeTodo(todo.id, todo.completed)} />
+                        <label onDoubleClick={this.handleDoubleClick}>
+                            {todo.text}
+                        </label>
+                        <Link to={'/todo/' + todo.id} key={todo.id}>
+                            <button className="btn-todo-details">Details</button>
+                        </Link>
+                        <button className="destroy"
+                                onClick={() => deleteTodo(todo.id)} />
+                    </div>
             )
         }
 

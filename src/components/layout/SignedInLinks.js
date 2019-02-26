@@ -3,12 +3,16 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOut } from "../../actions/authActions";
 
+
 const SignedInLinks = (props) => {
     return (
-        <ul className="right">
-            <li><NavLink to='/about'>About</NavLink></li>
-            <li><a href="/login" onClick={props.signOut}>Log Out</a></li>
-        </ul>
+        <div className="in-links">
+            <ul className="right">
+                <li><a href='/'>Home</a></li>
+                <li><NavLink to='/about'>About</NavLink></li>
+                <li><a onClick={props.signOut}>Log Out</a></li>
+            </ul>
+        </div>
     );
 };
 

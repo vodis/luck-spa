@@ -1,16 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 import { connect } from 'react-redux';
 
-const Navbar = () => {
+const Navbar = (props) => {
+    const { auth } = props;
+    const links = auth.uid ? <SignedInLinks/> : <SignedOutLinks/>;
+
     return (
         <nav className="nav-wrapper grey darken-3">
-            <div className="container">
-                <Link to='/' className="brand-logo" >Luck SPA</Link>
-                <SignedInLinks/>
-                <SignedOutLinks/>
+            <div className="container container-tab">
+                <div className="brand-log">
+                    <a href='/' className="brand-logo" >Luck SPA</a>
+                </div>
+                { links }
             </div>
         </nav>
     );

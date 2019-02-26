@@ -1,18 +1,17 @@
 import * as types from '../constants/ActionTypes';
 
-export const completeAllTodos = () => ({ type: types.COMPLETE_ALL_TODOS });
-export const clearCompleted = () => ({ type: types.CLEAR_COMPLETED });
 export const setVisibilityFilter = filter => ({ type: types.SET_VISIBILITY_FILTER, filter});
 
 export const addTodo = (text) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
+        const profile = getState().firebase.profile;
+        const authorId = getState().firebase.auth.uid;
         firestore.collection('todos').add({
             text,
             completed: false,
-            authorId: 12345,
-            authorFirstName: 'Dima',
-            authorLastName: 'Voitenko',
+            authorId: authorId,
+            displayName: profile.displayName,
             createdAt: new Date()
         })
             .then(() => {
@@ -60,6 +59,13 @@ export const completeTodo = (id, completed) => (dispatch, getState, { getFirebas
             dispatch({ type: 'CREATE_TODO_ERROR', err })
         })
 };
+
+export const completeAllTodos = () => ({ type: types.COMPLETE_ALL_TODOS });
+export const clearCompleted = (todos) => {
+    console.log("this", todos);
+    return { type: types.CLEAR_COMPLETED }
+};
+
 
 
 

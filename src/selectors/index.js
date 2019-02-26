@@ -3,7 +3,7 @@ import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilters'
 
 const getVisibilityFilter = state => state.visibilityFilter;
 
-const getTodos = state => { console.log(state);
+const getTodos = state => {
     return state.firestore.ordered.todos !== undefined
         ? state.firestore.ordered.todos
         : state.todos;
