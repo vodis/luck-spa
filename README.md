@@ -1,4 +1,10 @@
-Link to Luck SPA - https://luck-spa.firebaseapp.com
+## What is Luck SPA
+Welcome to Luck SPA built on React and hosting with Firebase, and signing in with OAuth 2.0! We’re excited to show our result.
+- Fire up a browser and go to - https://luck-spa.firebaseapp.com
+
+Application             |  Sign in with Google
+:-------------------------:|:-------------------------:
+![](./public/app-cover.png)  |  ![](./public/sign-in.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
